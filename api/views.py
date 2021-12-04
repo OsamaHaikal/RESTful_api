@@ -1,17 +1,18 @@
 from django.contrib.auth.models import User
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+# from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from .serializers import UserSerializer
 from books.models import Book
 from django.contrib.auth.models import User
 from rest_framework import status
 from .serializers import BookSerializer
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import AllowAny
+# from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import AllowAny ,IsAuthenticated , IsAdminUser
 import jwt, datetime
 
 class GetRoutesView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self,request):
         routes = [
             {
@@ -52,6 +53,8 @@ class GetRoutesView(APIView):
     
     
 class RegisterView(APIView):
+    permission_classes = [AllowAny]
+
     
     def post(self,request):
 
@@ -61,10 +64,9 @@ class RegisterView(APIView):
         
         
         return Response(serializer.data,status=status.HTTP_201_CREATED)
-    
 
 class UserView(APIView):
-    
+    permission_classes = [IsAdminUser]
     def get(self,request):
         user = User.objects.all()
 
@@ -73,6 +75,8 @@ class UserView(APIView):
         return Response(serializer.data)
     
 class GetBooksView(APIView):
+    permission_classes = [AllowAny]
+
     def get(self,request):
         books = Book.objects.all()
         serializer = BookSerializer(books, many=True)
@@ -80,6 +84,8 @@ class GetBooksView(APIView):
   
 
 class GetBookView(APIView):
+    permission_classes = [AllowAny]
+
     def get(self,request,pk):
         
         book = Book.objects.filter(id=pk)

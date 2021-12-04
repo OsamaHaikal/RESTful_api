@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$=#(#1vhw6uql+rqvzr5_j=)bfnw=y=uoorj+_y^5@i_1j^y*@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://djangoauthjwt.herokuapp.com/','djangoauthjwt.herokuapp.com']
+ALLOWED_HOSTS = ['127:0.0.1/:8000','djangoauthjwt.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -64,11 +64,7 @@ REST_FRAMEWORK = {
         
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    'DEFAULT_PERMISSION_CLASSES':(
-         'rest_framework.permissions.IsAuthenticated',
-         'rest_framework.permissions.AllowAny'
-
-    )
+    
     
 }
 TEMPLATES = [

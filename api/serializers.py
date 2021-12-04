@@ -19,8 +19,9 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id','username', 'password', 'password2', 'email', 'first_name', 'last_name')
         extra_kwargs = {
-            'first_name': {'required': True},
-            'last_name': {'required': True}
+            'first_name': {'required': False},
+            'last_name': {'required': False},
+            
         }
 
     def validate(self, attrs):
@@ -33,8 +34,6 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create(
             username=validated_data['username'],
             email=validated_data['email'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name']
         )
 
         
