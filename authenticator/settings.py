@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$=#(#1vhw6uql+rqvzr5_j=)bfnw=y=uoorj+_y^5@i_1j^y*@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://djangoauthjwt.herokuapp.com/','djangoauthjwt.herokuapp.com/']
+ALLOWED_HOSTS = ['https://djangoauthjwt.herokuapp.com/','djangoauthjwt.herokuapp.com']
 
 
 INSTALLED_APPS = [
