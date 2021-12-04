@@ -10,7 +10,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from datetime import timedelta
 
 from pathlib import Path
-
+import os
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +25,7 @@ SECRET_KEY = 'django-insecure-$=#(#1vhw6uql+rqvzr5_j=)bfnw=y=uoorj+_y^5@i_1j^y*@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://djangoauthjwt.herokuapp.com/','djangoauthjwt.herokuapp.com/']
 
 
 INSTALLED_APPS = [
@@ -93,8 +94,12 @@ WSGI_APPLICATION = 'authenticator.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+         'USER': 'tvvqidbjrfnxab',
+         'HOST':'ec2-176-34-105-15.eu-west-1.compute.amazonaws.com',
+         'NAME':'d873sj2tq9tibj',
+         'PASSWORD': '388926bc4b8d25e0a4317d8c60b5c20f538732fa0891baf4a42f7b1ce071d1d1',
+         'PORT':'5432',
     }
 }
 
@@ -134,7 +139,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
 
 # Default primary key field type
